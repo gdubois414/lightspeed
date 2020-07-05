@@ -2,27 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
-    public function show()
+    public function index()
     {
-        $user = \request('user');
+        return response(User::with('projects')->get()->toJSON(), Response::HTTP_OK);
+    }
 
-        if($user){
-            $user = User::where('name', $user)->first();
-            return view('user', [
-                'user' => $user
-            ]);
-        }
-        else{
-            $users = User::get();
-            return view('index', [
-                'users' => $users
-            ]);
-        }
-
+    public function show(User $user)
+    {
+//        return response(User::where('id', $user->id)->with('projects')->first()->toJSON(), Response::HTTP_OK);
+        $data = new UserResource(User::find($user->id));
+        return response($data, Response::HTTP_OK);
     }
 }

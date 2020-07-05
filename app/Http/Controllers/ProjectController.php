@@ -4,27 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function show(Project $project)
     {
-        $projects = Project::get();
-        return view('index', [
-            'projects' => $projects
-        ]);
-    }
-
-    public function show($project)
-    {
-        $project = Project::where('slug', $project)->first();
-
-        if(!$project){
-            abort(404);
-        }
-
-        return view('project', [
-            'project' => $project
-        ]);
+        return response(Project::where('id', $project->id)->with('users')->get()->toJSON(), Response::HTTP_OK);
     }
 }
