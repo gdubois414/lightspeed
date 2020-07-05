@@ -1,0 +1,75 @@
+h1, p{
+    margin: 0;
+}
+
+body{
+    font: 400 16px/1.3 'Nunito Sans', Arial, sans-serif;
+}
+
+.page-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.hours-estimate{
+    font-size: 22px;
+}
+
+.page-container{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+table{
+    width: 100%;
+    margin: 30px 0;
+}
+
+th, td{
+    padding: 5px 10px;
+    text-align: left;
+}
+
+th{
+    background: #aaa;
+}
+
+td{
+    font-size: 18px;
+}
+
+tr:nth-of-type(even) td{
+    background: #ccc;
+}
+
+a{
+    text-decoration: none;
+    color: cornflowerblue;
+}
+
+a:hover,
+a:focus{
+    color: black;
+}
+
+.button{
+    text-decoration: none;
+    border-radius: 7px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    height: 35px;
+    background: cornflowerblue;
+    color: white;
+    border: 1px solid cornflowerblue;
+
+}
+
+.button:hover,
+.button:focus{
+    background: transparent;
+    color: cornflowerblue;
+}
