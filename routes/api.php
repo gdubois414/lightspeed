@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* All Users */
 Route::resource('users', 'UserController')->only(['index']);
 
+/* Single User */
 Route::resource('user', 'UserController')->only(['show']);
 
+/* Single Project */
 Route::resource('project', 'ProjectController')->only(['show']);

@@ -2,14 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProjectResource;
 use App\Project;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+/**
+ * Class ProjectController
+ * @package App\Http\Controllers
+ */
 class ProjectController extends Controller
 {
-    public function show(Project $project)
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response
+     */
+    public function show($id)
     {
-        return response(Project::where('id', $project->id)->with('users')->get()->toJSON(), Response::HTTP_OK);
+        // Use a resource to properly format the data
+        $data = new ProjectResource(Project::find($id));
+        return response($data, Response::HTTP_OK);
     }
 }

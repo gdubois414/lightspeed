@@ -15,11 +15,11 @@
                 <td>{{ user.name | capitalize }}</td>
                 <td>
                             <span v-for="(project, index) in user.projects">
-                                <button class="plain-button" @click="showProject(project.id)">{{ project.name }}</button><span v-if="index !== user.projects.length - 1">, </span>
+                                <button class="plain-button" @click="$emit('showProject', project.id, 'home')">{{ project.name }}</button><span v-if="index !== user.projects.length - 1">, </span>
                             </span>
                 </td>
                 <td>
-                    <button class="button" @click="$emit('showUser', user.id)">View</button>
+                    <button class="button" @click="$emit('showUser', user.name, 'home')">View</button>
                 </td>
             </tr>
 

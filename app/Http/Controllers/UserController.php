@@ -14,10 +14,10 @@ class UserController extends Controller
         return response(User::with('projects')->get()->toJSON(), Response::HTTP_OK);
     }
 
-    public function show(User $user)
+    public function show($name)
     {
-//        return response(User::where('id', $user->id)->with('projects')->first()->toJSON(), Response::HTTP_OK);
-        $data = new UserResource(User::find($user->id));
+        $data = new UserResource(User::where('name', $name)->first());
         return response($data, Response::HTTP_OK);
+//        return response(User::where('id', $user->id)->with('projects')->first()->toJSON(), Response::HTTP_OK);
     }
 }

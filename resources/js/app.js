@@ -1,6 +1,6 @@
 require('./bootstrap');
 
-
+// Standard Vue/Laravel set up
 window.Vue = require('vue');
 
 if (process.env.MIX_APP_ENV === 'production') {
@@ -13,7 +13,7 @@ else{
     Vue.config.debug = true;
 }
 
-
+//Create a filter to properly capitalize names and proper nouns.
 Vue.filter('capitalize', function (value) {
     if (!value) return ''
     value = value.toString()
