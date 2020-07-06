@@ -5,8 +5,15 @@ namespace App\Http\Controllers;
 use App\Project;
 use Illuminate\Http\Request;
 
+/**
+ * Class ProjectController
+ * @package App\Http\Controllers
+ */
 class ProjectController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $projects = Project::get();
@@ -15,6 +22,10 @@ class ProjectController extends Controller
         ]);
     }
 
+    /**
+     * @param $project
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show($project)
     {
         $project = Project::where('slug', $project)->first();
