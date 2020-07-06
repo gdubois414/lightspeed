@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Illuminate\Http\Response;
 
 /**
  * Class Project
@@ -36,4 +37,6 @@ class Project extends Model
         $hours = DB::table('tasks')->where('project_id', $this->id)->pluck('hours_estimate');
         return $hours->sum();
     }
+
+
 }

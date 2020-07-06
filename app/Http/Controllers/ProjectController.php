@@ -2,29 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProjectResource;
 use App\Project;
-use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
+/**
+ * Class ProjectController
+ * @package App\Http\Controllers
+ */
 class ProjectController extends Controller
 {
-    public function index()
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response
+     */
+    public function show($id)
     {
-        $projects = Project::get();
-        return view('index', [
-            'projects' => $projects
-        ]);
-    }
-
-    public function show($project)
-    {
-        $project = Project::where('slug', $project)->first();
-
-        if(!$project){
-            abort(404);
-        }
-
-        return view('project', [
-            'project' => $project
-        ]);
+        // Use a resource to properly format the data
+        $data = new ProjectResource(Project::find($id));
+        return response($data, Response::HTTP_OK);
     }
 }

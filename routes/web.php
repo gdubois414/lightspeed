@@ -14,15 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', 'UserController@show');
-
-//Route::get('/', function(){
-//    $user = request('user');
-//
-//    if(!$user){
-//        abort(404);
-//    }
-//
-//});
-
-Route::get('/project/{project}', 'ProjectController@show');
+Route::get('/', function(){
+    return view('index');
+});
