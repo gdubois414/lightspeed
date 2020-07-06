@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
-use Illuminate\Http\Response;
 
 /**
  * Class Project
